@@ -2877,7 +2877,7 @@ textarea:focus {
   top: -0.125rem;
   left: 0.5rem;
   outline: none;
-  background: url(../../img/icons/play.svg) center center no-repeat;
+  background: url(../img/icons/play.svg) center center no-repeat;
 }
 
 .player__start.paused {
