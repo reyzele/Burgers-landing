@@ -52,11 +52,11 @@
   &::before {
     content: "";
     background-image: url("../../img/icons/phone.svg");
-    width: rem(11px);
-    height: rem(11px);
+    width: 11px;
+    height: 11px;
     position: absolute;
-    left: rem(-20px);
-    top: rem(1px);
+    left: -20px;
+    top: 1px;
   }
 }
 

@@ -1,20 +1,20 @@
 // FULL PAGE
 let isScroll = true;
 const phones = {
-    width: 480,
-    heigth: 800
-  },
-  tablets = {
-    width: 768,
-    heigth: 1024
-  },
-  desktops = {
-    width: 992,
-    heigth: 650
-  };
+  width: 480,
+  heigth: 800,
+};
+const tablets = {
+  width: 768,
+  heigth: 1024,
+};
+const desktops = {
+  width: 992,
+  heigth: 650,
+};
 
 $("#fullpage").fullpage({
-  //Навигация
+  // Navigation
   licenseKey: "D2DB0F76-42B04C3A-938789B7-AE7D1A8F",
   menu: "#menu",
   anchors: [
@@ -26,7 +26,7 @@ $("#fullpage").fullpage({
     "reviews",
     "order",
     "video",
-    "map"
+    "map",
   ],
   navigation: true,
   scrollBar: true,
@@ -34,15 +34,15 @@ $("#fullpage").fullpage({
   showActiveTooltip: true,
   slidesNavigation: false,
 
-  //Скроллинг
+  // Scrolling
   css3: false,
   scrollingSpeed: 900,
   fitToSection: false,
   fitToSectionDelay: 200,
 
-  afterResize: function() {
+  afterResize: function () {
     checkDevice();
-  }
+  },
 });
 
 function media_(device) {
@@ -51,13 +51,25 @@ function media_(device) {
   );
 }
 
+function eventHandler(event) {
+  event.preventDefault();
+}
+
 function checkDevice() {
   isScroll =
     ($(window).width() > desktops.width &&
       $(window).height() < desktops.heigth) ||
-    (media_(desktops) || media_(tablets) || media_(phones))
+    media_(desktops) ||
+    media_(tablets) ||
+    media_(phones)
       ? false
       : true;
+
+  if (isScroll) {
+    window.addEventListener("mousewheel", eventHandler, { passive: false });
+  } else {
+    window.removeEventListener("mousewheel", eventHandler, { passive: false });
+  }
 
   $.fn.fullpage.setAutoScrolling(isScroll);
 }
@@ -65,7 +77,7 @@ function checkDevice() {
 $("#fp-nav").removeAttr("style");
 
 checkDevice();
-$(window).resize(function() {
+$(window).resize(function () {
   checkDevice();
 });
 
@@ -73,11 +85,11 @@ $(window).resize(function() {
 ymaps.ready(init);
 
 function init() {
-  var myMap, myPlacemark1, myPlacemark2, myPlacemark3, myPlacemark4;
+  let myMap, myPlacemark1, myPlacemark2, myPlacemark3, myPlacemark4;
 
   myMap = new ymaps.Map("map-m", {
     center: [59.91502556, 30.486548],
-    zoom: 10
+    zoom: 10,
   });
 
   myPlacemark1 = new ymaps.Placemark(
@@ -87,13 +99,13 @@ function init() {
       balloonContentHeader: "Mr.Burger на Товарищеском",
       balloonContentBody:
         "Бургеры у нас - быстро, вкусно, сытно, ждем по адресу:",
-      balloonContentFooter: "Санкт-Петербург, Товарищеский проспект, 20/27"
+      balloonContentFooter: "Санкт-Петербург, Товарищеский проспект, 20/27",
     },
     {
       iconLayout: "default#image",
-      iconImageHref: "http://burger-landding.reyzele.com/img/map-marker.png",
+      iconImageHref: "./img/map-marker.svg",
       iconImageSize: [46, 57],
-      iconImageOffset: [-3, -42]
+      iconImageOffset: [-3, -42],
     }
   );
   myPlacemark2 = new ymaps.Placemark(
@@ -103,13 +115,13 @@ function init() {
       balloonContentHeader: "Mr.Burger на Тверской",
       balloonContentBody:
         "Бургеры у нас - быстро, вкусно, сытно, ждем по адресу:",
-      balloonContentFooter: "Санкт-Петербург, Товарищеский проспект, 20/27"
+      balloonContentFooter: "Санкт-Петербург, Товарищеский проспект, 20/27",
     },
     {
       iconLayout: "default#image",
-      iconImageHref: "http://burger-landding.reyzele.com/img/map-marker.png",
+      iconImageHref: "./img/map-marker.svg",
       iconImageSize: [46, 57],
-      iconImageOffset: [-3, -42]
+      iconImageOffset: [-3, -42],
     }
   );
   myPlacemark3 = new ymaps.Placemark(
@@ -119,13 +131,13 @@ function init() {
       balloonContentHeader: "Mr.Burger на Московском",
       balloonContentBody:
         "Бургеры у нас - быстро, вкусно, сытно, ждем по адресу:",
-      balloonContentFooter: "Санкт-Петербург, Товарищеский проспект, 20/27"
+      balloonContentFooter: "Санкт-Петербург, Товарищеский проспект, 20/27",
     },
     {
       iconLayout: "default#image",
-      iconImageHref: "http://burger-landding.reyzele.com/img/map-marker.png",
+      iconImageHref: "./img/map-marker.svg",
       iconImageSize: [46, 57],
-      iconImageOffset: [-3, -42]
+      iconImageOffset: [-3, -42],
     }
   );
   myPlacemark4 = new ymaps.Placemark(
@@ -135,13 +147,13 @@ function init() {
       balloonContentHeader: "Mr.Burger на Чапыгина",
       balloonContentBody:
         "Бургеры у нас - быстро, вкусно, сытно, ждем по адресу:",
-      balloonContentFooter: "Санкт-Петербург, Товарищеский проспект, 20/27"
+      balloonContentFooter: "Санкт-Петербург, Товарищеский проспект, 20/27",
     },
     {
       iconLayout: "default#image",
-      iconImageHref: "http://burger-landding.reyzele.com/img/map-marker.png",
+      iconImageHref: "./img/map-marker.svg",
       iconImageSize: [46, 57],
-      iconImageOffset: [-3, -42]
+      iconImageOffset: [-3, -42],
     }
   );
 
@@ -155,40 +167,47 @@ function init() {
 }
 
 // ACORDION SECTION TEAM
-$(".team-acco__trigger").on("click", function(e) {
+$(".team-acco__trigger").on("click", function (e) {
   e.preventDefault();
+
   const thisItem = this.parentNode;
   const thisPanel = this.nextElementSibling;
+
   if (thisItem.classList.contains("active")) {
     return null;
   }
+
   $(".team-acco__item").removeClass("active");
   thisItem.classList.add("active");
+
   $(".team-acco__content").removeAttr("style");
   thisPanel.style.maxHeight = "fit-content";
 });
 
 // ACORDION SECTION REVIEWS
-$(".menu-acco__trigger").on("click", e => {
+$(".menu-acco__trigger").on("click", (e) => {
   e.preventDefault();
   const thisTarget = e.currentTarget;
   const thisItem = thisTarget.parentNode;
+
   if (thisItem.classList.contains("active")) {
     return null;
   }
+
   $(".menu-acco__item").removeClass("active");
   thisItem.classList.add("active");
 });
 
-$(".menu-close").on("click", e => {
+$(".menu-close").on("click", (e) => {
   e.preventDefault();
   $(".menu-acco__item").removeClass("active");
 });
 
 // HAMBURGER MENU
-$("#hamburger-menu").on("click", e => {
+$("#hamburger-menu").on("click", (e) => {
   e.preventDefault();
   const this_ = e.currentTarget;
+
   $(this_).toggleClass("open");
   if (!this_.classList.contains("open")) {
     fullpage_api.setAllowScrolling(true);
@@ -198,7 +217,7 @@ $("#hamburger-menu").on("click", e => {
     $("#hamburger-menu-overlay").addClass("active");
   }
 });
-$(".nav__link").on("click", e => {
+$(".nav__link").on("click", (e) => {
   setTimeout(() => {
     $("#hamburger-menu").toggleClass("open");
     fullpage_api.setAllowScrolling(true);
@@ -215,8 +234,8 @@ $(".owl-carousel").owlCarousel({
   nav: true,
   navText: [
     "<svg class='burgers__arrow burgers__arrow-left'><use xlink:href='./img/sprite.svg#arrow-scroll'></use></svg>",
-    "<svg class='burgers__arrow burgers__arrow-right'><use xlink:href='./img/sprite.svg#arrow-scroll' ></use></svg>"
-  ]
+    "<svg class='burgers__arrow burgers__arrow-right'><use xlink:href='./img/sprite.svg#arrow-scroll' ></use></svg>",
+  ],
 });
 
 // Slider menu on hover & click
@@ -226,21 +245,21 @@ const checkPossition = () =>
 function compositionMenu() {
   if (checkPossition()) {
     $(".burgers-compos")
-      .mouseenter(e => {
+      .mouseenter((e) => {
         $(".burgers__menu-btn").css("background-color", "#e45028");
       })
-      .mouseleave(e => {
+      .mouseleave((e) => {
         $(".burgers__menu-btn").removeAttr("style");
       });
   } else {
-    $(".burgers__menu-btn").on("click", e => {
+    $(".burgers__menu-btn").on("click", (e) => {
       $(e.currentTarget)
         .css("background-color", "#e45028")
         .closest(".burgers__item")
         .find(".burgers-compos")
         .css({ display: "flex" });
     });
-    $(".burgers-compos__close").on("click", e => {
+    $(".burgers-compos__close").on("click", (e) => {
       e.preventDefault();
       $(e.currentTarget)
         .closest(".burgers-compos")
@@ -258,15 +277,11 @@ const openButton = $(".review__view");
 const template = document.querySelector("#overlayTemplate").innerHTML;
 const overlay = createOverlay(template);
 
-$(openButton).on("click", e => {
+$(openButton).on("click", (e) => {
   e.preventDefault();
   const item = $(e.currentTarget).closest(".reviews__item");
-  const name = $(item)
-    .find(".review__title")
-    .text();
-  const text = $(item)
-    .find(".review__shorttext p")
-    .text();
+  const name = $(item).find(".review__title").text();
+  const text = $(item).find(".review__shorttext p").text();
   overlay.open();
   overlay.setContent(name, text);
 });
@@ -283,12 +298,12 @@ function createOverlay(template) {
 
   fragment = null;
 
-  overlayElement.addEventListener("click", e => {
+  overlayElement.addEventListener("click", (e) => {
     if (e.target === overlayElement) {
       closeElement.click();
     }
   });
-  closeElement.addEventListener("click", e => {
+  closeElement.addEventListener("click", (e) => {
     document.body.removeChild(overlayElement);
   });
 
@@ -302,7 +317,7 @@ function createOverlay(template) {
     setContent(title_, text_) {
       title.innerHTML = title_;
       text.innerHTML = text_;
-    }
+    },
   };
 }
 
@@ -319,7 +334,7 @@ function submitForm(ev) {
     type = form.attr("method");
 
   ajaxForm(form)
-    .done(function(msg) {
+    .done(function (msg) {
       var mesaage = msg.mes,
         status = msg.status;
       if (status === "OK") {
@@ -330,13 +345,12 @@ function submitForm(ev) {
         overlay.setContent("Произошла ошибка", mesaage);
       }
     })
-    .fail(function(jqXHR, textStatus) {
+    .fail(function (jqXHR, textStatus) {
       alert("Request failed: " + textStatus);
     });
 }
 
-// Универсальная функция для работы с формами
-var ajaxForm = function(form) {
+const ajaxForm = function (form) {
   var data = form.serialize(),
     url = form.attr("action");
 
@@ -344,7 +358,7 @@ var ajaxForm = function(form) {
     type: "POST",
     url: url,
     dataType: "JSON",
-    data: data
+    data: data,
   });
 };
 // YOUTUBE PLAYER
@@ -361,12 +375,12 @@ function onYouTubeIframeAPIReady() {
       showinfo: 0,
       rel: 0,
       autoplay: 0,
-      modestbranding: 0
+      modestbranding: 0,
     },
     events: {
       onReady: onPlayerReady,
-      onStateChange: onPlayerStateChange
-    }
+      onStateChange: onPlayerStateChange,
+    },
   });
 }
 
@@ -404,7 +418,7 @@ function onPlayerStateChange(event) {
 
 function changeButtonPosition(percents) {
   $(".player__playback-button").css({
-    left: `${percents}%`
+    left: `${percents}%`,
   });
 }
 
@@ -423,7 +437,7 @@ function formatTime(time) {
   return minutes + ":" + formatedSeconds;
 }
 
-$(".player__start").on("click", e => {
+$(".player__start").on("click", (e) => {
   const playerStatus = player.getPlayerState(); // 0 - ended, 1 - played, 2 - paused ...
 
   if (playerStatus !== 1) {
@@ -433,7 +447,7 @@ $(".player__start").on("click", e => {
   }
 });
 
-$(".player__playback").on("click", e => {
+$(".player__playback").on("click", (e) => {
   e.preventDefault();
   const bar = $(e.currentTarget);
   const newButtonPosition = e.pageX - bar.offset().left;
@@ -444,11 +458,11 @@ $(".player__playback").on("click", e => {
   player.seekTo(newPlayerTime);
 });
 
-$(".player__splash").on("click", e => {
+$(".player__splash").on("click", (e) => {
   player.playVideo();
 });
 
-$(".player__volume-button").on("click", function() {
+$(".player__volume-button").on("click", function () {
   var mute_toggle = $(this);
 
   if (player.isMuted()) {
