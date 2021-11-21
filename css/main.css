@@ -622,7 +622,7 @@ textarea:focus {
 }
 
 .best {
-  background: url("../../img/bg/best.jpg") no-repeat;
+  background: url("../img/bg/best.jpg") no-repeat;
   background-size: cover;
   text-align: center;
   display: flex;
@@ -636,13 +636,13 @@ textarea:focus {
 
 @media screen and (max-width: 768px) {
   .best {
-    background-image: url("../../img/bg/best-tablets.jpg");
+    background-image: url("../img/bg/best-tablets.jpg");
   }
 }
 
 @media screen and (max-width: 480px) {
   .best {
-    background-image: url("../../img/bg/best-phones.jpg");
+    background-image: url("../img/bg/best-phones.jpg");
   }
 }
 
@@ -829,7 +829,7 @@ textarea:focus {
 }
 
 .footer {
-  background: url("../../img/bg/footer.jpg") center bottom no-repeat;
+  background: url("../img/bg/footer.jpg") center bottom no-repeat;
   background-size: cover;
   position: absolute;
   bottom: 0;
@@ -1066,7 +1066,7 @@ textarea:focus {
 }
 
 .hero {
-  background: url("../../img/bg/hero-bg.png") center center no-repeat;
+  background: url("../img/bg/hero-bg.png") center center no-repeat;
   background-size: cover;
   flex-direction: column;
 }
@@ -1417,7 +1417,7 @@ textarea:focus {
 }
 
 .menu {
-  background: url("../../img/bg/menu.jpg") 50% no-repeat;
+  background: url("../img/bg/menu.jpg") 50% no-repeat;
   background-size: cover;
   position: relative;
 }
@@ -1571,7 +1571,7 @@ textarea:focus {
 }
 
 .order {
-  background: url("../../img/bg/order.jpg") 50% no-repeat;
+  background: url("../img/bg/order.jpg") 50% no-repeat;
   background-size: cover;
   display: flex;
   align-items: center;
@@ -2255,7 +2255,7 @@ textarea:focus {
 }
 
 .team {
-  background: url("../../img/bg/team.jpg") 50% no-repeat;
+  background: url("../img/bg/team.jpg") 50% no-repeat;
   background-size: cover;
   position: relative;
 }
